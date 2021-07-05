@@ -1,4 +1,4 @@
-# Projecto Final | Bytes 4 Future
+# Projecto Final | Plataforma Ser Aluno
 
 
 ## Plataforma de Livros de Ensino + Manual da Vida for Dummies
