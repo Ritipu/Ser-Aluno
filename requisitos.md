@@ -29,9 +29,15 @@ A Maria achou interessante partilhar no forum da aula um pensamento que teve que
 ## Requisitos Funcionais
 
 * Deve ser possivel um visitante tirar as suas dúvidas sobre o programa.
-* Deve ser possivel um estudante/professor autenticar-se com o seu cartão de cidadão/cartão da escola para aceder à plataforma.
-    * Deve ser possivel não tendo estes métodos de autenticação, um estudante/professor registar-se na plataforma e aguardar que o seu acesso seja garantido.
-* Deve ser possivel um estudante escolher os livros escolares mediante as disciplinas do seu ano de ensino.
+
+* Deve ser possivel um visitante autenticar-se com o seu cartão de cidadão para aceder à plataforma.
+
+* Deve ser possivel um visitante autenticar-se com o seu cartão da escola para aceder à plataforma.
+
+    * Deve ser possivel não tendo estes métodos de autenticação, um visitante registar-se na plataforma e aguardar que o seu acesso seja garantido.
+
+* Deve ser possivel um estudante escolher os livros escolares atribuidos à sua escola mediante as disciplinas do seu ano de ensino.
+
 * Deve ser possivel um professor aceder ao leque completo de livros do seu nível ensino.
 
 ---
