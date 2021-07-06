@@ -28,11 +28,12 @@ A Maria achou interessante partilhar no forum da aula um pensamento que teve que
 
 ## Requisitos Funcionais
 
-* Deve ser possivel um visitante tirar as suas dúvidas sobre o programa.
+* Deve ser possivel um visitante ter acesso às informações sobre o programa na página inicial
 
-* Deve ser possivel um visitante autenticar-se com o seu cartão de cidadão para aceder à plataforma.
+* Deve ser possivel um visitante autenticar-se com a chave móvel digital para aceder à plataforma.
 
-    * Deve ser possivel não tendo estes métodos de autenticação, um visitante pode registar-se na plataforma.
+    * Deve ser possivel não tendo estes métodos de autenticação, um visitante pode pedir os seus dados de autenticação
+
 
 * Deve ser possivel um estudante escolher os livros escolares atribuidos à sua escola mediante as disciplinas do seu ano de ensino.
 
