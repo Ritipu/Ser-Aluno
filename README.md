@@ -1,4 +1,4 @@
-# Projecto Final | Bytes 4 Future
+# Plataforma Ser Aluno | Projecto Final 
 
 
 ## Plataforma de Livros de Ensino + Manual da Vida for Dummies
@@ -14,4 +14,4 @@
 * Alocação de recursos preciosos para a evolução técnologica do nosso sistema de educação
 
 * Possibilidade de integração de parceiros para a exposição de áreas especializadas em idades mais jovens.
-    * Ajuda com a decisão de trajetória de carreira por parte dos jovens 
+    * Ajuda com a decisão de trajetória de carreira
