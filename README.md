@@ -1,4 +1,4 @@
-# Projecto Final | Plataforma Ser Aluno
+# Plataforma Ser Aluno | Projecto Final 
 
 
 ## Plataforma de Livros de Ensino + Manual da Vida for Dummies
