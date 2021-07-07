@@ -5,8 +5,14 @@ import { SliderData } from './components/Slider/SliderData';
 
 
 function App() {
-  return <ImageSlider slides={SliderData}/>;
+  
+  return (<div className="titulodoslide"><h1>Slider</h1>
+  <ImageSlider slides={SliderData} />
+          </div>
+    )
 
 }
 
+
 export default App;
+
