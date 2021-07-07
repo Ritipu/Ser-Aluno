@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Plataforma from './Components/plataforma'
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -13,6 +14,11 @@ export default class App extends React.Component {
 	acessPlatform() {
 		this.setState({ isLoggedIn: true })
 	}
+
+	logout() {
+		this.setState({ isLoggedIn: false })
+	}
+
 	render() {
 		if (this.state.isLoggedIn === false) {
 			return (
@@ -28,7 +34,7 @@ export default class App extends React.Component {
 		} else {
 			return (
 				<div>
-					Ola ola
+					<Plataforma logout={() => this.logout()}/>
 				</div>
 			)
 		}

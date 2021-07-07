@@ -1,0 +1,50 @@
+.viewport {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    display:flex;
+    flex-direction: row;
+}
+
+.colEsq {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 15%;
+    background-color: gray;
+    justify-content: space-around;
+}
+
+.aluno {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controlos {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rodape {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#icon {
+    height: 100px;
+    width: 100px;
+}
+
+.colDir {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 85%;
+    background-color:lightgrey;
+}
