@@ -2,13 +2,15 @@ import React from 'react';
 import './plataforma.css'
 import Menu from './menu'
 import Dashboard from './dashboard'
-import Livros from './livros'
+import LivrosPage from './livrosPage'
+import Perfil from './perfil'
 
 export default class Plataforma extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			controlador: 0
+			controlador: 0,
+			controladorLivros: "Home"
 		}
 	}
 
@@ -18,13 +20,24 @@ export default class Plataforma extends React.Component {
 
 	livros() {
 		this.setState({controlador: 1});
+		this.setState({controladorLivros: "Home"});
 	}
+
+	perfil() {
+		this.setState({controlador: 2});
+	}
+
+	livrosMatematica() {
+		this.setState({controladorLivros: "Matematica"});
+	}
+
 	render() {
 		if (this.state.controlador === 0) {
 			return (
 				<div className="viewport">
 					<Menu dashboard={() => this.dashboard()}
-					livros={() => this.livros()} 
+					livros={() => this.livros()}
+					perfil={() => this.perfil()}
 					logout={this.props.logout}/>
 					<Dashboard/>
 				</div>
@@ -36,8 +49,24 @@ export default class Plataforma extends React.Component {
 				<div className="viewport">
 					<Menu dashboard={() => this.dashboard()}
 					livros={() => this.livros()} 
-					logout={this.props.logout}/>
-					<Livros />
+					perfil={() => this.perfil()}
+					logout={this.props.logout}
+					/>
+					<LivrosPage state={this.state.controladorLivros}
+					livrosMatematica={() => this.livrosMatematica()}
+					/>
+				</div>
+			)
+		}
+		if (this.state.controlador === 2) {
+			return (
+				<div className="viewport">
+					<Menu dashboard={() => this.dashboard()}
+					livros={() => this.livros()}
+					perfil={() => this.perfil()}
+					logout={this.props.logout}
+					/>
+					<Perfil />
 				</div>
 			)
 		}

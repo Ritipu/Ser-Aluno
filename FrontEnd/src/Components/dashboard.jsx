@@ -13,6 +13,8 @@ export default class Dashboard extends React.Component {
                 <div className="inferior">
                     <div className="infEsq">
                         Notas anteriores nas disciplinas?
+                        (Quadro de Honra?)
+                        (Top 5?)
 						</div>
 
                     <div className="infDir">

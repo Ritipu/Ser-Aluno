@@ -23,7 +23,7 @@ export default class App extends React.Component {
 		if (this.state.isLoggedIn === false) {
 			return (
 				<div className="navbar">
-					<img src="/logo.png" height="30px" />
+					<img src="/logo.png" height="30px" alt="Ser Aluno"/>
 					<button onClick={this.acessPlatform}>Login</button>
 					<button onClick={this.acessPlatform}>
 					<img src="https://www.autenticacao.gov.pt/o/autenticacao-gov-theme/images/logo/logo-ag.svg"
