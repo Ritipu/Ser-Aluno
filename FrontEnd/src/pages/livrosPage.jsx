@@ -8,6 +8,7 @@ export default class LivrosPage extends React.Component {
 		super(props);
 		this.state = {
 			livro: '',
+			livroEx:'',
 			matematicaPreview: '/livros/5ano/matematicaDidatica.jpg',
 			portuguesPreview: '/livros/5ano/portuguesDidatica.jpg',
 			inglesPreview: '/livros/5ano/inglesDidatica.jpg',
@@ -19,6 +20,7 @@ export default class LivrosPage extends React.Component {
 	didaticoMatematica() {
 		this.setState({
 			livro: '/livros/5ano/matematicaDidatica.pdf',
+			livroEx:'/livros/5ano/matematicaExercicios.pdf',
 			matematicaPreview: '/livros/5ano/matematicaDidatica.jpg'
 		})
 	}
@@ -26,6 +28,7 @@ export default class LivrosPage extends React.Component {
 	exerciciosMatematica() {
 		this.setState({
 			livro: '/livros/5ano/matematicaExercicios.pdf',
+			livroEx:'/livros/5ano/matematicaDidatica.pdf',
 			matematicaPreview: '/livros/5ano/matematicaExercicios.jpg'
 		})
 	}
