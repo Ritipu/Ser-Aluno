@@ -1,7 +1,7 @@
 import React from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 
-export default class Livros extends React.Component {
+export default class Livro extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,7 +21,12 @@ export default class Livros extends React.Component {
     }
 
     paginaAnterior() {
-        this.setState({ pageNumber: this.state.pageNumber - 1 })
+        if (this.state.pageNumber > 1) {
+            this.setState({ pageNumber: this.state.pageNumber - 1 })
+        } else if (this.state.pageNumber === 1){
+            this.setState({ pageNumber: this.state.pageNumber = 1 })
+        }
+        
     }
 
     render() {

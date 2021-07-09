@@ -1,5 +1,5 @@
 import React from 'react';
-import './plataforma.css'
+import '../css/plataforma.css'
 import Menu from './menu'
 import Dashboard from './dashboard'
 import LivrosPage from './livrosPage'

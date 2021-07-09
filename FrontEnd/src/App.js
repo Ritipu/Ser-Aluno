@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Plataforma from './Components/plataforma'
+import Plataforma from './pages/plataforma'
 
 export default class App extends React.Component {
 	constructor(props) {

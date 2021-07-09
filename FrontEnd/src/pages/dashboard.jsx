@@ -1,6 +1,6 @@
 import React from 'react';
 import Horario from './horario'
-import './dashboard.css'
+import '../css/dashboard.css'
 
 export default class Dashboard extends React.Component {
 

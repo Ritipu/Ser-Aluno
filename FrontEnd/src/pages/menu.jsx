@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar } from '@material-ui/core'
-import './menu.css'
+import '../css/menu.css'
 
 export default class Menu extends React.Component {
     render() {

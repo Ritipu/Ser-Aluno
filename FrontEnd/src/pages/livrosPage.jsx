@@ -1,11 +1,8 @@
 import React from 'react';
-import Livros from './livros';
+import Livro from './livros';
 import { Card, CardActionArea, CardMedia, CardContent, CardActions } from '@material-ui/core'
-import './livrosPage.css'
+import '../css/livrosPage.css'
 export default class LivrosPage extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		if (this.props.state === "Home") {
@@ -18,7 +15,6 @@ export default class LivrosPage extends React.Component {
 										component="img"
 										image="/livro.jpg"
 										alt="livroMatematica"
-
 									/>
 									<CardContent>
 										<h3>Matemática</h3>
@@ -192,7 +188,7 @@ export default class LivrosPage extends React.Component {
 
 		if (this.props.state === "Matematica") {
 			return (
-				<Livros />
+				<Livro />
 			)
 		}
 	}
