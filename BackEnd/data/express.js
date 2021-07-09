@@ -2,15 +2,21 @@ const express = require('express');
 // const {  } = require('./db');
 
 const PORT = 3001;
-const app = express();
+const server = express();
 
-app.use(express.json());
+server.use(express.json());
 
-app.get('/', (req, res) => {
+server.get('/', (req, res) => {
     res.status(200).json({
         message: 'Working'
     })
 })
 
+server.get('/obtemAnoLetivo', (req, res) => {
+    anoLetivo = '5º Ano'
+    res.status(200).json(anoLetivo)
+})
 
-app.listen(PORT, () => console.log('À escuta em ' + PORT));
+
+
+server.listen(PORT, () => console.log('À escuta em ' + PORT));

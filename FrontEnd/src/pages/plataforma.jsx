@@ -10,25 +10,32 @@ export default class Plataforma extends React.Component {
 		super(props)
 		this.state = {
 			controlador: 0,
-			controladorLivros: "Home"
+			controladorLivros: "Home",
+			anoLetivo: ""
 		}
 	}
 
 	dashboard() {
-		this.setState({controlador: 0});
+		this.setState({ controlador: 0 });
 	}
 
-	livros() {
-		this.setState({controlador: 1});
-		this.setState({controladorLivros: "Home"});
+	homePageLivros() {
+		this.setState({ controlador: 1 });
+		this.setState({ controladorLivros: "Home" });
+	}
+
+	anoLetivo() {
+		fetch('/obtemAnoLetivo') // GET
+			.then(res => res.json())
+			.then(ano => this.setState({ anoLetivo: ano }));
 	}
 
 	perfil() {
-		this.setState({controlador: 2});
+		this.setState({ controlador: 2 });
 	}
 
-	livrosMatematica() {
-		this.setState({controladorLivros: "Matematica"});
+	readLivro() {
+		this.setState({ controladorLivros: "readLivro" });
 	}
 
 	render() {
@@ -36,10 +43,12 @@ export default class Plataforma extends React.Component {
 			return (
 				<div className="viewport">
 					<Menu dashboard={() => this.dashboard()}
-					livros={() => this.livros()}
-					perfil={() => this.perfil()}
-					logout={this.props.logout}/>
-					<Dashboard/>
+						homePageLivros={() => this.homePageLivros()}
+						perfil={() => this.perfil()}
+						anoLetivo={this.state.anoLetivo}
+						getAnoLetivo={() => this.anoLetivo()}
+						logout={this.props.logout} />
+					<Dashboard />
 				</div>
 			)
 		}
@@ -48,12 +57,14 @@ export default class Plataforma extends React.Component {
 			return (
 				<div className="viewport">
 					<Menu dashboard={() => this.dashboard()}
-					livros={() => this.livros()} 
-					perfil={() => this.perfil()}
-					logout={this.props.logout}
+						homePageLivros={() => this.homePageLivros()}
+						perfil={() => this.perfil()}
+						anoLetivo={this.state.anoLetivo}
+						getAnoLetivo={() => this.anoLetivo()}
+						logout={this.props.logout}
 					/>
 					<LivrosPage state={this.state.controladorLivros}
-					livrosMatematica={() => this.livrosMatematica()}
+						readLivro={() => this.readLivro()}
 					/>
 				</div>
 			)
@@ -62,9 +73,11 @@ export default class Plataforma extends React.Component {
 			return (
 				<div className="viewport">
 					<Menu dashboard={() => this.dashboard()}
-					livros={() => this.livros()}
-					perfil={() => this.perfil()}
-					logout={this.props.logout}
+						homePageLivros={() => this.homePageLivros()}
+						perfil={() => this.perfil()}
+						anoLetivo={this.state.anoLetivo}
+						getAnoLetivo={() => this.anoLetivo()}
+						logout={this.props.logout}
 					/>
 					<Perfil />
 				</div>
