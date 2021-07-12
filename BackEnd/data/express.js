@@ -4,6 +4,7 @@ const express = require('express');
     obtemAluno,
     obtemAnoLetivo,
     obtemLivros,
+    obtemPerfil,
     insereSessao,
     obtemSessao,
     sessaoPrelongada  
@@ -74,6 +75,11 @@ server.post("/obtemLivros", async (req, res) => {
         res.sendStatus(401)
     }
     res.status(200).json({ livros })
+})
+
+server.post("/obtemPerfil", async (req, res) => {
+    const id = await req.params.obtemPerfil(_id)
+    res.status(200).json({ id })
 })
 
 // Tentar perceber como fazer

@@ -56,6 +56,10 @@ async function obtemLivros(livros) {
     return res;
 }
 
+async function obtemPerfil(id){
+    const collection = await getCollection(DB_NAME, "alunos")
+    const res = await getCollection.findOne({_id: mongodb.ObjectId(id)})
+}
 
 async function insereSessao(uid) {
     const collection = await getCollection(DB_NAME, "sessoens");
@@ -96,6 +100,8 @@ module.exports = {
     insereAluno,
     obtemAluno,
     obtemAnoLetivo,
+    obtemLivros,
+    obtemPerfil,
     insereSessao,
     obtemSessao,
     sessaoPrelongada    
