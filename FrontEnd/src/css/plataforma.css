@@ -46,5 +46,14 @@
     align-items: center;
     height: 100vh;
     width: 85%;
-    background-color:lightgrey;
+
+}
+
+.colDirLivros {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    width: 85%;
 }

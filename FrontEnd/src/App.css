@@ -37,7 +37,7 @@
   height: 3.5rem;
   margin-right: 0.5rem;
   width: 8rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
   text-transform: uppercase;
   border-radius: 2px;
@@ -45,6 +45,7 @@
 
 .auth-login:hover {
   cursor: pointer;
+  box-shadow: 0 0 4px #48b831;
   background-color: #48b831;
 }
 
@@ -59,6 +60,7 @@
 
 .auth-gov:hover {
   cursor: pointer;
+  box-shadow: 0 0 4px #2b91ff;
   background-color: #2b91ff;
 }
 
