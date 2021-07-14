@@ -35,9 +35,9 @@ async function getCollection(dbName, collectionName) {
     return db.collection(collectionName);
 }
 
-async function obtemEscola(escola) {
+async function obtemEscola(escolas) {
     const collection = await getCollection(DB_NAME, "escolas");
-    const res = await collection.findOne({_escola: mongodb.ObjectId(escola)})
+    const res = await collection.findOne({_escola: mongodb.ObjectId(escolas)})
     return res;
 }
 

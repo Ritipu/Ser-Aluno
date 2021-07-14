@@ -5,8 +5,6 @@ import Dashboard from './dashboard'
 import LivrosPage from './livrosPage'
 import Perfil from './perfil'
 
-const AUTH_TOKEN_KEY = "token"
-
 export default class Plataforma extends React.Component {
 	constructor(props) {
 		super(props)
