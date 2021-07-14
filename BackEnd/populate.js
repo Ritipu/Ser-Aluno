@@ -1,7 +1,7 @@
 const {insereAluno, closeConnection} = require('./data/db')
 
 const arr = [
-    {username: 'b', password: 'a'}
+    {username: 'Aluno1', password: '123'}
 ];
 
 async function insert() {

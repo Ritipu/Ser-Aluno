@@ -9,7 +9,7 @@ const express = require('express');
     insereSessao,
     obtemSessao,
     sessaoProlongada  
-} = require('./db');
+} = require('./data/db');
 
 const bcrypt = require('bcrypt');
 
@@ -18,7 +18,7 @@ const server = express();
 
 server.use(express.json());
 
-server.get('/', (req, res) => {
+server.get('/data', (req, res) => {
     res.status(200).json({
         message: 'Working'
     })
