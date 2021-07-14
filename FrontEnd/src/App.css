@@ -37,8 +37,8 @@
   height: 3.5rem;
   margin-right: 0.5rem;
   width: 8rem;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 700;
   text-transform: uppercase;
   border-radius: 2px;
 }
@@ -83,4 +83,9 @@
   height: 7rem;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.react-pdf__Document {
+  overflow: hidden;
+  height: 800px;
 }

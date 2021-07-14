@@ -50,7 +50,7 @@ export default class Livro extends React.Component {
 
                         <h2>Livro Didático</h2>
                         <Document file={this.props.livroCorreto} onLoadSuccess={this.onDocumentLoadSuccess}>
-                            <Page pageNumber={pageNumber} height="800" />
+                            <Page pageNumber={pageNumber} height={800} />
                         </Document>
                         <div>
                             <button onClick={this.paginaAnterior}>Prev</button>
