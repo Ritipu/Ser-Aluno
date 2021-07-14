@@ -6,27 +6,27 @@ const { MongoClient } = mongodb;
 
 const URI = "mongodb://localhost:27017"
 const DB_NAME = "Ser_Aluno"
-let aluno  
+let client  
 
 async function connect(uri) {
     try {
 
-        if (aluno) return aluno
+        if (client) return client
 
-        aluno = new MongoClient(uri, {
+        client = new MongoClient(uri, {
             useUnifiedTopology: true
         })
 
-        await aluno.connect();
+        await client.connect();
 
-        return aluno
+        return client
     } catch (err) {
         console.log(err)
     }
 }
 
 function closeConnection() {
-    aluno.close()
+    client.close()
 }
 
 async function getCollection(dbName, collectionName) {
@@ -35,8 +35,14 @@ async function getCollection(dbName, collectionName) {
     return db.collection(collectionName);
 }
 
+async function obtemEscola(escola) {
+    const collection = await getCollection(DB_NAME, "escolas");
+    const res = await collection.findOne({_escola: mongodb.ObjectId(escola)})
+    return res;
+}
+
 async function insereAluno(aluno) {
-    const collection = await getCollection(DB_NAME, "alunos");
+    const collection = await getCollection(DB_NAME, "escolas");
     aluno.password = await bcrypt.hash(aluno.password, saltRounds);
     const res = await collection.insertOne(aluno)
     console.log(aluno, res)
@@ -44,36 +50,38 @@ async function insereAluno(aluno) {
 }
 
 async function obtemAluno(id) {
-    const collection = await getCollection(DB_NAME, "alunos");
+    const collection = await getCollection(DB_NAME, "escolas");
     const res = await collection.findOne({_id: mongodb.ObjectId(id)})
     return res;
 }
 
 async function obtemAlunoPorNome(username) {
-    const collection = await getCollection(DB_NAME, "alunos");
+    const collection = await getCollection(DB_NAME, "escolas");
     const res = await collection.findOne({username})
     return res;
 }
 
 async function obtemAnoLetivo(anoLetivo) {
-    const collection = await getCollection(DB_NAME, "alunos");
+    const collection = await getCollection(DB_NAME, "escolas");
     const res = await collection.findOne({_anoLetivo: mongodb.ObjectId(anoLetivo)})
     return res;
 }
 
-async function obtemAnoLetivoById(anoLetivo) { 
-    const collection = await getCollection(DB_NAME, "alunos");
+//Resolver 
+
+/* async function obtemAnoLetivoById(anoLetivo) { 
+    const collection = await getCollection(DB_NAME, "escolas");
     return
-}
+} */
 
 async function obtemLivros(livros) {
-    const collection = await getCollection(DB_NAME, "alunos");
+    const collection = await getCollection(DB_NAME, "escolas");
     const res = await collection.findOne({_livros: mongodb.ObjectId(livros)})
     return res;
 }
 
 async function obtemPerfil(id){
-    const collection = await getCollection(DB_NAME, "alunos")
+    const collection = await getCollection(DB_NAME, "escolas")
     const res = await getCollection.findOne({_id: mongodb.ObjectId(id)})
 }
 
@@ -105,14 +113,8 @@ async function sessaoProlongada(id) {
     return res; 
 }
 
-// async function insertUser(user) {
-//     const collection = await getCollection(DB_NAME, "users");
-//     user.password = await bcrypt.hash(user.password, saltRounds)
-//     const res = await collection.insertOne(user);
-//     return res.insertedId;
-// }
-
-module.exports = { 
+module.exports = {
+    obtemEscola, 
     insereAluno,
     obtemAluno,
     obtemAlunoPorNome,

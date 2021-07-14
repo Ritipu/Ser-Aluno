@@ -1,5 +1,6 @@
 const express = require('express');
  const { 
+     obtemEscola,
     insereAluno,
     obtemAluno,
     obtemAlunoPorNome,
@@ -18,7 +19,7 @@ const server = express();
 
 server.use(express.json());
 
-server.get('/data', (req, res) => {
+server.get('/', (req, res) => {
     res.status(200).json({
         message: 'Working'
     })
@@ -52,6 +53,11 @@ async function verificaAluno(req, res, next) {
         res.sendStatus(401)
     }
 }
+
+server.get("/escolas", async (req, res) => {
+    const escola = await obtemEscola(req.body)
+    res.sendStatus(200).json({ _escola })
+})
 
 server.get("/aluno", verificaAluno, async (req, res) => {
     res.status(200).json({ user: req.user })
