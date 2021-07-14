@@ -25,6 +25,10 @@ async function connect(uri) {
     }
 }
 
+function closeConnection() {
+    aluno.close()
+}
+
 async function getCollection(dbName, collectionName) {
     const aluno = await connect(URI);
     const db = aluno.db(dbName);
@@ -34,7 +38,8 @@ async function getCollection(dbName, collectionName) {
 async function insereAluno(aluno) {
     const collection = await getCollection(DB_NAME, "alunos");
     aluno.password = await bcrypt.hash(aluno.password, saltRounds);
-    const res = await collection.insertOne(user)
+    const res = await collection.insertOne(aluno)
+    console.log(aluno, res)
     return res.insertedId;
 }
 
@@ -44,10 +49,21 @@ async function obtemAluno(id) {
     return res;
 }
 
+async function obtemAlunoPorNome(username) {
+    const collection = await getCollection(DB_NAME, "alunos");
+    const res = await collection.findOne({username})
+    return res;
+}
+
 async function obtemAnoLetivo(anoLetivo) {
     const collection = await getCollection(DB_NAME, "alunos");
     const res = await collection.findOne({_anoLetivo: mongodb.ObjectId(anoLetivo)})
     return res;
+}
+
+async function obtemAnoLetivoById(anoLetivo) { 
+    const collection = await getCollection(DB_NAME, "alunos");
+    return
 }
 
 async function obtemLivros(livros) {
@@ -76,7 +92,7 @@ async function obtemSessao(id) {
     return res; 
 }
 
-async function sessaoPrelongada(id) {
+async function sessaoProlongada(id) {
     const collection = await getCollection(DB_NAME, "sessoens");
     const res = await collection.updateOne(
         {_id: mongodb.ObjectId(id)},
@@ -99,10 +115,12 @@ async function sessaoPrelongada(id) {
 module.exports = { 
     insereAluno,
     obtemAluno,
+    obtemAlunoPorNome,
     obtemAnoLetivo,
     obtemLivros,
     obtemPerfil,
     insereSessao,
     obtemSessao,
-    sessaoPrelongada    
+    sessaoProlongada,
+    closeConnection
 }

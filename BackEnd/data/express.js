@@ -2,12 +2,13 @@ const express = require('express');
  const { 
     insereAluno,
     obtemAluno,
+    obtemAlunoPorNome,
     obtemAnoLetivo,
     obtemLivros,
     obtemPerfil,
     insereSessao,
     obtemSessao,
-    sessaoPrelongada  
+    sessaoProlongada  
 } = require('./db');
 
 const bcrypt = require('bcrypt');
@@ -25,9 +26,9 @@ server.get('/', (req, res) => {
 
 server.post("/auth", async (req, res) => {
     const { username, password } = req.body;
-    const aluno = await findUser(username);
+    const aluno = await obtemAlunoPorNome(username);
     if (aluno && await bcrypt.compare(password, aluno.password)) {
-        const sessionId = await insertSession(aluno._id)
+        const sessionId = await insereSessao(aluno._id)
         res.status(200).json({ token: sessionId })
     } else {
         res.sendStatus(404)
@@ -39,10 +40,10 @@ async function verificaAluno(req, res, next) {
     const auth = req.headers.authorization?.split(' ') ?? []
     console.log(auth)
     if (auth.length > 0) {
-        const session = await findSession(auth[1])
+        const session = await obtemSessao(auth[1])
         if (session && session.expiresAt > new Date()) {
-            await extendSession(session._id)
-            req.user = await findUserById(session.uid);
+            await sessaoProlongada(session._id)
+            req.user = await obtemAluno(session.uid);
             next()
         } else {
             res.sendStatus(401)
@@ -53,7 +54,7 @@ async function verificaAluno(req, res, next) {
 }
 
 server.get("/aluno", verificaAluno, async (req, res) => {
-    res.status(200).json({ aluno: req.aluno.nome })
+    res.status(200).json({ user: req.user })
 })
 
 server.post("/aluno", async (req, res) => {
@@ -66,7 +67,7 @@ server.get('/obtemAnoLetivo', (req, res) => {
     res.status(200).json(anoLetivo)
 })
 
-server.post("/obtemLivros", async (req, res) => {
+server.get("/obtemLivros", async (req, res) => {
     const livros = await obtemLivros(req.body)
     
     if (anoLetivo) {
@@ -77,7 +78,7 @@ server.post("/obtemLivros", async (req, res) => {
     res.status(200).json({ livros })
 })
 
-server.post("/obtemPerfil", async (req, res) => {
+server.get("/obtemPerfil", async (req, res) => {
     const id = await req.params.obtemPerfil(_id)
     res.status(200).json({ id })
 })
