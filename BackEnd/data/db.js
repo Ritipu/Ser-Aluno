@@ -11,17 +11,18 @@ let client
 async function connect(uri) {
     try {
 
-        if (client) return client
-
-        client = new MongoClient(uri, {
+        // Cria o cliente
+        const client = new MongoClient(uri, {
             useUnifiedTopology: true
         })
 
-        await client.connect();
+        // Aguarda a ligação
+        await client.connect()
 
-        return client
+        // Retorna o cliente
+        return client;
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 }
 
@@ -102,11 +103,6 @@ async function obtemLivro(livros_id) {
     return res;
 }
 
-async function obtemPerfil(perfil_id){
-    const collection = await getCollection(DB_NAME, "escolas")
-    const res = await getCollection.findOne({_id: mongodb.ObjectId(perfil_id)})
-}
-
 async function insereSessao(uid) {
     const collection = await getCollection(DB_NAME, "sessoens");
     const res = await collection.insertOne({
@@ -146,7 +142,6 @@ module.exports = {
     insereLivros,
     obtemLivros,
     obtemLivro,
-    obtemPerfil,
     insereSessao,
     obtemSessao,
     sessaoProlongada,

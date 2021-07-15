@@ -1,13 +1,12 @@
 const {
     insereAluno,
-    /* obtemAluno,  */
     closeConnection
 } 
 = require('./data/db')
 
 const arr = [
     {username: 'Aluno1', password: '123'},
-    {username: 'Aluno2', password: '123'}
+    {username: 'Aluno2', password: '123'} // Será que temos que insere o ano com o aluno?
 
 ];
 
@@ -17,14 +16,5 @@ async function insert() {
     }
     closeConnection()
 }
-
-//Ver o problema e analisar
-
-/* async function getAluno() {
-    for (const user of arr) {
-        await obtemAluno(user)
-    }
-    closeConnection()
-} */
 
 insert().then(() => console.log('done'))

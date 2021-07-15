@@ -35,6 +35,7 @@ export default class LivrosPage extends React.Component {
 		super(props);
 		this.state = {
 			livros: [
+<<<<<<< HEAD
 				{
 					subject: 'Matemática',
 					livro: '/livros/5ano/matematicaDidatica.pdf',
@@ -70,9 +71,19 @@ export default class LivrosPage extends React.Component {
 					preview: '/livros/5ano/cienciaDidatica.jpg',
 					previewEx: '/livros/5ano/cienciaExercicios.jpg'
 				}
+=======
+				
+>>>>>>> 20569aec (start fetch on frontEnd)
 			]
 		}
 
+	}
+
+	componentDidMount() {
+		const res = fetch('/api/livros')
+		const resBody = res.json();
+		console.log('mount', resBody)
+        setLivros(resBody.animais)
 	}
 
 	render() {
