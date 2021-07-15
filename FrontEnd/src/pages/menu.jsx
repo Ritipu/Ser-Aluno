@@ -19,16 +19,16 @@ export default class Menu extends React.Component {
 					</div>
 
 					<div className="controlos">
-						<button className="btnMenu" onClick={this.props.dashboard}>{<Dashboard className="btnMenuIcon"/>}Dashboard</button>
-						<button className="btnMenu" onClick={this.props.homePageLivros}>{<MenuBook className="btnMenuIcon"/>}Livros</button>
-						<button className="btnMenu" onClick={this.props.perfil}>{<AccountCircle className="btnMenuIcon"/>}Perfil</button>
+						<button className="btnMenu1" onClick={this.props.dashboard}>{<Dashboard className="btnMenuIcon"/>}Dashboard</button>
+						<button className="btnMenu2" onClick={this.props.homePageLivros}>{<MenuBook className="btnMenuIcon"/>}Livros</button>
+						<button className="btnMenu3" onClick={this.props.perfil}>{<AccountCircle className="btnMenuIcon"/>}Perfil</button>
 					</div>
 
 
 					<div className="rodape">
-						<button className="btnMenu" onClick={this.props.logout}>{<ExitToApp className="btnMenuIcon"/>}Logout</button>
+						<button className="btnMenu4" onClick={this.props.logout}>{<ExitToApp className="btnMenuIcon"/>}Logout</button>
 						<br />
-						<img src="/logo3.png" height="75px" alt="serAluno" />
+						<img className="rodapeLogo" src="/logo3.png" height="80px" alt="serAluno" />
 					</div>
 			</section>
 		)
