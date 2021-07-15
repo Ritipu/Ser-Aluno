@@ -90,9 +90,15 @@ async function insereLivros(livros) {
     return res.insertedId;
 }
 
-async function obtemLivros(livros_id) {
-    const collection = await getCollection(DB_NAME, "escolas");
-    const res = await collection.find({_id: mongodb.ObjectId(livros_id)})
+async function obtemLivros() {
+    const collection = await getCollection(DB_NAME, "livros");
+    const res = await collection.find().toArray();
+    return res;
+}
+
+async function obtemLivro(livros_id) {
+    const collection = await getCollection(DB_NAME, "livros");
+    const res = await collection.findOne({_id: mongodb.ObjectId(livros_id)})
     return res;
 }
 
@@ -139,6 +145,7 @@ module.exports = {
     obtemAnoLetivo,
     insereLivros,
     obtemLivros,
+    obtemLivro,
     obtemPerfil,
     insereSessao,
     obtemSessao,

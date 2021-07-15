@@ -9,7 +9,7 @@ const express = require('express');
     obtemAnoLetivo,
     insereLivros,
     obtemLivros,
-    obtemPerfil,
+    obtemLivro,
     insereSessao,
     obtemSessao,
     sessaoProlongada
@@ -87,19 +87,21 @@ server.post('/anoLetivo', async (req, res) => {
     res.status(200).json({ anoLetivo })
 })
 
+server.get('/livros', async (req, res) => {
+    const livros = await obtemLivros()
+    console.log(livros)
+    res.status(200).json({ livros })
+})
+
 server.get('/livros/:id', async (req, res) => {
     const livros = await obtemLivros(req.params.id)
+    console.log(livros)
     res.status(200).json({ livros })
 })
 
 server.post("/livros", async (req, res) => {
     const livros = await insereLivros(req.body)
     res.status(200).json({ livros })
-})
-
-server.get("/perfil/:id", async (req, res) => {
-    const perfil = await obtemPerfil(req.params.id)
-    res.status(200).json({ perfil })
 })
 
 server.listen(PORT, () => console.log('À escuta em ' + PORT));
