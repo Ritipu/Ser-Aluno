@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import Plataforma from './pages/plataforma'
-import ImageSlider from './components/slider/imageSlider';
-import { SliderData } from './components/slider/sliderData';
+import ImageSlider from './components/Slider/imageSlider';
+import { SliderData } from './components/Slider/sliderData';
 
 export default class App extends React.Component {
 	constructor(props) {
