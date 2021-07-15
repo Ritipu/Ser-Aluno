@@ -57,7 +57,7 @@ async function verificaAluno(req, res, next) {
 //How we want to insert schools?
 server.get("/escolas", async (req, res) => {
     const escola = await obtemEscola(req.body)
-    res.sendStatus(200).json({ _escola })
+    res.sendStatus(200).json({ escola })
 })
 
 server.get("/aluno", verificaAluno, async (req, res) => {

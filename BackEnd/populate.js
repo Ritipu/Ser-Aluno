@@ -1,6 +1,6 @@
 const {
     insereAluno,
-    obtemAluno, 
+    /* obtemAluno,  */
     closeConnection
 } 
 = require('./data/db')
@@ -15,6 +15,8 @@ async function insert() {
     }
     closeConnection()
 }
+
+//Ver o problema e analisar
 
 /* async function getAluno() {
     for (const user of arr) {
