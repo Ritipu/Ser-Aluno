@@ -92,7 +92,7 @@ async function insereLivros(livros) {
 
 async function obtemLivros(livros_id) {
     const collection = await getCollection(DB_NAME, "escolas");
-    const res = await collection.findMany({_id: mongodb.ObjectId(livros_id)})
+    const res = await collection.find({_id: mongodb.ObjectId(livros_id)})
     return res;
 }
 

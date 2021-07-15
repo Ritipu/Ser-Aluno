@@ -40,12 +40,12 @@ export default class App extends React.Component {
 						<ImageSlider slides={SliderData} />
 					</div>
 					<div className="footer">
-						<img src="/logos/portoEditora.png" height="60px" />
-						<img src="/logos/agaKhan.png" height="60px" />
-						<img src="/logos/Logo_Portugal_2020.png" height="60px" />
-						<img src="/logos/logo_segurancaSocial.png" height="60px" />
-						<img src="/logos/republica.png" height="60px" />
-						<img src="/logos/uniaoEuropeia.png" height="60px" />
+						<img src="/logos/portoEditora.png" height="60px" alt="Porto Editora"/>
+						<img src="/logos/agaKhan.png" height="60px" alt="AgaKhan" />
+						<img src="/logos/Logo_Portugal_2020.png" height="60px" alt="Portugal 2020" />
+						<img src="/logos/logo_segurancaSocial.png" height="60px" alt="Segurançã Social" />
+						<img src="/logos/republica.png" height="60px" alt="Republica Portuguesa" />
+						<img src="/logos/uniaoEuropeia.png" height="60px" alt="União Europeia" />
 					</div>
 				</div>
 			);
