@@ -46,10 +46,10 @@ export default class Livro extends React.Component {
         if (this.state.viewControl === 0) {
             return (
                 <section className="colDirLivros">
-                    <div className="livrosControl">
+                    <div className="livrosControl" >
 
                         <h2>Livro Didático</h2>
-                        <Document file={this.props.livroCorreto} onLoadSuccess={this.onDocumentLoadSuccess}>
+                        <Document file={this.props.livroCorreto} onLoadSuccess={this.onDocumentLoadSuccess}  >
                             <Page pageNumber={pageNumber} height={800} />
                         </Document>
                         <div>

@@ -15,16 +15,37 @@
     justify-content: space-evenly;
     align-items: center
 }
+#card-title {
+    color: #474747;
+}
 
 #card-btn-1{
+    border:0;
     padding: 10px 15px !important;
-    background-color: #3da029 !important;
-    color: white !important;
-
+    font-weight: 700;
+    border-radius:3px;
+    background-color: #3A79BD;
+    color: #ffffff;
+    transition: .2s ease-out;
 }
 #card-btn-2{
+    border:0;
     padding: 10px 15px !important;
-    background-color: #3da029 !important;
-    color: white !important;
+    font-weight: 700;
+    border-radius:3px;
+    background-color: #ec6055;
+    color: #ffffff;
+    transition: .2s ease-out;
+}
 
+#card-btn-1:hover{
+    cursor: pointer;
+    background-color: #AFD079;
+    color: #474747;
+}
+
+#card-btn-2:hover{
+    cursor: pointer;
+    background-color: #AFD079;
+    color: #474747;
 }

@@ -18,8 +18,8 @@ function ObjLivro(props) {
 					image={selector === 'didatico' ? props.livro.preview : props.livro.previewEx}
 					alt="livroMatematica"
 				/>
-				<CardContent>
-					<h3>{props.livro.subject}</h3>
+				<CardContent id="card-title">
+					<h2>{props.livro.subject}</h2>
 				</CardContent>
 			</CardActionArea>
 			<CardActions>
@@ -50,14 +50,14 @@ export default class LivrosPage extends React.Component {
 					previewEx: '/livros/5ano/portuguesExercicios.jpg'
 				},
 				{
-					subject: 'Ingles',
+					subject: 'Inglês',
 					livro: '/livros/5ano/inglesDidatica.pdf',
 					livroEx: '/livros/5ano/inglesExercicios.pdf',
 					preview: '/livros/5ano/inglesDidatica.jpg',
 					previewEx: '/livros/5ano/inglesExercicios.jpg'
 				},
 				{
-					subject: 'Historia e Geografia',
+					subject: 'História e Geografia',
 					livro: '/livros/5ano/historiaDidatica.pdf',
 					livroEx: '/livros/5ano/historiaExercicios.pdf',
 					preview: '/livros/5ano/historiaDidatica.jpg',
