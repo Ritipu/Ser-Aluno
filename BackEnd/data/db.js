@@ -44,9 +44,9 @@ async function insereEscola(escola) {
 }
 
 //Obtem as escola do utilizador
-async function obtemEscola(escolas) {
+async function obtemEscola(escolas_id) {
     const collection = await getCollection(DB_NAME, "escolas");
-    const res = await collection.findOne({_escola: mongodb.ObjectId(escolas)})
+    const res = await collection.findOne({_id: mongodb.ObjectId(escolas_id)})
     return res;
 }
 
@@ -60,7 +60,7 @@ async function insereAluno(aluno) {
 
 async function obtemAluno(aluno_id) {
     const collection = await getCollection(DB_NAME, "alunos");
-    const res = await collection.findOne({_aluno_id: mongodb.ObjectId(aluno_id)})
+    const res = await collection.findOne({_id: mongodb.ObjectId(aluno_id)})
     return res;
 }
 
@@ -70,35 +70,35 @@ async function obtemAlunoPorNome(username) {
     return res;
 }
 
-async function insereAnoLetivo(ano) {
+async function insereAnoLetivo(anoLetivo) {
     const collection = await getCollection(DB_NAME, "anoLetivo");
-    const res = await collection.insertOne(ano)
-    console.log(ano, res)
+    const res = await collection.insertOne(anoLetivo)
+    console.log(anoLetivo, res)
     return res.insertedId;
 }
 
-async function obtemAnoLetivo(anoLetivo) {
+async function obtemAnoLetivo(anoLetivo_id) {
     const collection = await getCollection(DB_NAME, "anoLetivo");
-    const res = await collection.findOne({_anoLetivo: mongodb.ObjectId(anoLetivo)})
+    const res = await collection.findOne({_id: mongodb.ObjectId(anoLetivo_id)})
     return res;
 }
 
-//Resolver 
+async function insereLivros(livros) {
+    const collection = await getCollection(DB_NAME, "livros");
+    const res = await collection.insertOne(livros)
+    console.log(livros, res)
+    return res.insertedId;
+}
 
-/* async function obtemAnoLetivoById(anoLetivo) { 
+async function obtemLivros(livros_id) {
     const collection = await getCollection(DB_NAME, "escolas");
-    return
-} */
-
-async function obtemLivros(livros) {
-    const collection = await getCollection(DB_NAME, "escolas");
-    const res = await collection.findOne({_livros: mongodb.ObjectId(livros)})
+    const res = await collection.findMany({_id: mongodb.ObjectId(livros_id)})
     return res;
 }
 
-async function obtemPerfil(id){
+async function obtemPerfil(perfil_id){
     const collection = await getCollection(DB_NAME, "escolas")
-    const res = await getCollection.findOne({_id: mongodb.ObjectId(id)})
+    const res = await getCollection.findOne({_id: mongodb.ObjectId(perfil_id)})
 }
 
 async function insereSessao(uid) {
@@ -137,6 +137,7 @@ module.exports = {
     obtemAlunoPorNome,
     insereAnoLetivo,
     obtemAnoLetivo,
+    insereLivros,
     obtemLivros,
     obtemPerfil,
     insereSessao,

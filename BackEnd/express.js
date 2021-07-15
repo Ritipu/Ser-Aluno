@@ -7,11 +7,12 @@ const express = require('express');
     obtemAlunoPorNome,
     insereAnoLetivo,
     obtemAnoLetivo,
+    insereLivros,
     obtemLivros,
     obtemPerfil,
     insereSessao,
     obtemSessao,
-    sessaoProlongada  
+    sessaoProlongada
 } = require('./data/db');
 
 const bcrypt = require('bcrypt');
@@ -57,14 +58,14 @@ async function verificaAluno(req, res, next) {
     }
 }
 
-server.get("/escolas", async (req, res) => {
-    const escola = await obtemEscola(req.body)
-    res.sendStatus(200).json({ escola })
+server.get("/escolas/:id", async (req, res) => {
+    const escolas = await obtemEscola(req.params.id)
+    res.status(200).json({ escolas })
 })
 
 server.post("/escolas", async (req, res) => {
-    const escola_id = await insereEscola(req.body)
-    res.status(200).json({ escola_id })
+    const escolas = await insereEscola(req.body)
+    res.status(200).json({ escolas })
 })
 
 server.get("/aluno", verificaAluno, async (req, res) => {
@@ -76,30 +77,35 @@ server.post("/aluno", async (req, res) => {
     res.status(200).json({ id })
 })
 
-server.get('/anoLetivo', async (req, res) => {
-    const anoLetivo = await obtemAnoLetivo(req.body)
+server.get('/anoLetivo/:id', async (req, res) => {
+    const anoLetivo = await obtemAnoLetivo(req.params.id)
     res.sendStatus(200).json({ anoLetivo })
 })
 
 server.post('/anoLetivo', async (req, res) => {
-    const ano_id = await insereAnoLetivo(req.body)
-    res.status(200).json({ ano_id })
+    const anoLetivo = await insereAnoLetivo(req.body)
+    res.status(200).json({ anoLetivo })
 })
 
-server.get("/obtemLivros", async (req, res) => {
+server.get("/livros", async (req, res) => {
     const livros = await obtemLivros(req.body)
     
     if (anoLetivo) {
-        const anoLetivo = await obtemAnoLetivo(anoLetivo._anoLetivo)
+        const anoLetivo = await obtemAnoLetivo(anoLetivo._id)
     } else {
         res.sendStatus(401)
     }
     res.status(200).json({ livros })
 })
 
-server.get("/obtemPerfil", async (req, res) => {
-    const id = await req.params.obtemPerfil(_id)
-    res.status(200).json({ id })
+server.get('/livros/:id', async (req, res) => {
+    const anoLetivo = await insereLivros(req.params.id)
+    res.sendStatus(200).json({ anoLetivo })
+})
+
+server.get("/perfil", async (req, res) => {
+    const perfil = await obtemPerfil(req.params.id)
+    res.status(200).json({ perfil })
 })
 
 // Tentar perceber como fazer
