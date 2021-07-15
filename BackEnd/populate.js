@@ -6,7 +6,9 @@ const {
 = require('./data/db')
 
 const arr = [
-    {username: 'Aluno1', password: '123'}
+    {username: 'Aluno1', password: '123'},
+    {username: 'Aluno2', password: '123'}
+
 ];
 
 async function insert() {

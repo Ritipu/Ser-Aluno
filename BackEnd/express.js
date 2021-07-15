@@ -1,9 +1,11 @@
 const express = require('express');
  const { 
-     obtemEscola,
+    insereEscola,
+    obtemEscola,
     insereAluno,
     obtemAluno,
     obtemAlunoPorNome,
+    insereAnoLetivo,
     obtemAnoLetivo,
     obtemLivros,
     obtemPerfil,
@@ -28,8 +30,9 @@ server.get('/', (req, res) => {
 server.post("/auth", async (req, res) => {
     const { username, password } = req.body;
     const aluno = await obtemAlunoPorNome(username);
+
     if (aluno && await bcrypt.compare(password, aluno.password)) {
-        const sessionId = await insereSessao(aluno._id)
+        const sessionId = await insereSessao(aluno.aluno_id)
         res.status(200).json({ token: sessionId })
     } else {
         res.sendStatus(404)
@@ -54,10 +57,14 @@ async function verificaAluno(req, res, next) {
     }
 }
 
-//How we want to insert schools?
 server.get("/escolas", async (req, res) => {
     const escola = await obtemEscola(req.body)
     res.sendStatus(200).json({ escola })
+})
+
+server.post("/escolas", async (req, res) => {
+    const escola_id = await insereEscola(req.body)
+    res.status(200).json({ escola_id })
 })
 
 server.get("/aluno", verificaAluno, async (req, res) => {
@@ -69,9 +76,14 @@ server.post("/aluno", async (req, res) => {
     res.status(200).json({ id })
 })
 
-server.get('/obtemAnoLetivo', (req, res) => {
-    anoLetivo = '5º Ano'
-    res.status(200).json(anoLetivo)
+server.get('/anoLetivo', async (req, res) => {
+    const anoLetivo = await obtemAnoLetivo(req.body)
+    res.sendStatus(200).json({ anoLetivo })
+})
+
+server.post('/anoLetivo', async (req, res) => {
+    const ano_id = await insereAnoLetivo(req.body)
+    res.status(200).json({ ano_id })
 })
 
 server.get("/obtemLivros", async (req, res) => {

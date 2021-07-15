@@ -35,6 +35,15 @@ async function getCollection(dbName, collectionName) {
     return db.collection(collectionName);
 }
 
+//Insere as escolas manualmente na escolas.js
+async function insereEscola(escola) {
+    const collection = await getCollection(DB_NAME, "escolas");
+    const res = await collection.insertOne(escola)
+    console.log(escola, res)
+    return res.insertedId;
+}
+
+//Obtem as escola do utilizador
 async function obtemEscola(escolas) {
     const collection = await getCollection(DB_NAME, "escolas");
     const res = await collection.findOne({_escola: mongodb.ObjectId(escolas)})
@@ -42,27 +51,34 @@ async function obtemEscola(escolas) {
 }
 
 async function insereAluno(aluno) {
-    const collection = await getCollection(DB_NAME, "escolas");
+    const collection = await getCollection(DB_NAME, "alunos");
     aluno.password = await bcrypt.hash(aluno.password, saltRounds);
     const res = await collection.insertOne(aluno)
     console.log(aluno, res)
     return res.insertedId;
 }
 
-async function obtemAluno(id) {
-    const collection = await getCollection(DB_NAME, "escolas");
-    const res = await collection.findOne({_id: mongodb.ObjectId(id)})
+async function obtemAluno(aluno_id) {
+    const collection = await getCollection(DB_NAME, "alunos");
+    const res = await collection.findOne({_aluno_id: mongodb.ObjectId(aluno_id)})
     return res;
 }
 
 async function obtemAlunoPorNome(username) {
-    const collection = await getCollection(DB_NAME, "escolas");
+    const collection = await getCollection(DB_NAME, "alunos");
     const res = await collection.findOne({username})
     return res;
 }
 
+async function insereAnoLetivo(ano) {
+    const collection = await getCollection(DB_NAME, "anoLetivo");
+    const res = await collection.insertOne(ano)
+    console.log(ano, res)
+    return res.insertedId;
+}
+
 async function obtemAnoLetivo(anoLetivo) {
-    const collection = await getCollection(DB_NAME, "escolas");
+    const collection = await getCollection(DB_NAME, "anoLetivo");
     const res = await collection.findOne({_anoLetivo: mongodb.ObjectId(anoLetivo)})
     return res;
 }
@@ -114,10 +130,12 @@ async function sessaoProlongada(id) {
 }
 
 module.exports = {
-    obtemEscola, 
+    insereEscola,
+    obtemEscola,
     insereAluno,
     obtemAluno,
     obtemAlunoPorNome,
+    insereAnoLetivo,
     obtemAnoLetivo,
     obtemLivros,
     obtemPerfil,
