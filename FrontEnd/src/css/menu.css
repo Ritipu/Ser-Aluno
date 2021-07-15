@@ -20,7 +20,7 @@
     font-size:15px;
     border: 0;
     background: none;
-    background: linear-gradient(to left, rgba(255,255,255,0) 50%, #ec6055 50%) right;
+    background: linear-gradient(to left, rgba(255,255,255,0) 50%, #FAB735 50%) right;
     background-size: 200%;
     transition: .2s ease-out;
 }
@@ -62,7 +62,7 @@
     font-size:15px;
     border: 0;
     background: none;
-    background: linear-gradient(to left, rgba(255,255,255,0) 50%, #FAB735 50%) right;
+    background: linear-gradient(to left, rgba(255,255,255,0) 50%, #ec6055 50%) right;
     background-size: 200%;
     transition: .2s ease-out;
 }
