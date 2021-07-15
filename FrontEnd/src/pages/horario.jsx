@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/horario.css'
 import { TableContainer, Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@material-ui/core'
 
 function createTableRow(class0, class1, class2, class3, class4, class5) {
@@ -16,34 +17,37 @@ const horario = [
 export default class Horario extends React.Component {
 	render() {
 		return (
-			<TableContainer component={Paper}>
-				<Table>
+			<div className="table">
+				<TableContainer component={Paper}>
+					<Table>
 
-					<TableHead>
-						<TableRow>
-							<TableCell></TableCell>
-							<TableCell>Segunda</TableCell>
-							<TableCell>Terça-Feira</TableCell>
-							<TableCell>Quarta-Feira</TableCell>
-							<TableCell>Quinta-Feira</TableCell>
-							<TableCell>Sexta-Feira</TableCell>
-						</TableRow>
-					</TableHead>
-
-					<TableBody>
-						{horario.map((horario) => (
+						<TableHead>
 							<TableRow>
-								<TableCell>{horario.class0}</TableCell>
-								<TableCell>{horario.class1}</TableCell>
-								<TableCell>{horario.class2}</TableCell>
-								<TableCell>{horario.class3}</TableCell>
-								<TableCell>{horario.class4}</TableCell>
-								<TableCell>{horario.class5}</TableCell>
+								<TableCell></TableCell>
+								<TableCell>Segunda</TableCell>
+								<TableCell>Terça-Feira</TableCell>
+								<TableCell>Quarta-Feira</TableCell>
+								<TableCell>Quinta-Feira</TableCell>
+								<TableCell>Sexta-Feira</TableCell>
 							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</TableContainer>
+						</TableHead>
+
+						<TableBody>
+							{horario.map((horario) => (
+								<TableRow>
+									<TableCell>{horario.class0}</TableCell>
+									<TableCell>{horario.class1}</TableCell>
+									<TableCell>{horario.class2}</TableCell>
+									<TableCell>{horario.class3}</TableCell>
+									<TableCell>{horario.class4}</TableCell>
+									<TableCell>{horario.class5}</TableCell>
+								</TableRow>
+							))}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</div>
+
 		)
 	}
 }
