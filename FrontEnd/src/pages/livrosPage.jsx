@@ -34,52 +34,24 @@ export default class LivrosPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			livros: [
-				{
-					subject: 'Matemática',
-					livro: '/livros/5ano/matematicaDidatica.pdf',
-					livroEx: '/livros/5ano/matematicaExercicios.pdf',
-					preview: '/livros/5ano/matematicaDidatica.jpg',
-					previewEx: '/livros/5ano/matematicaExercicios.jpg'
-				},
-				{
-					subject: 'Português',
-					livro: '/livros/5ano/portuguesDidatica.pdf',
-					livroEx: '/livros/5ano/portuguesExercicios.pdf',
-					preview: '/livros/5ano/portuguesDidatica.jpg',
-					previewEx: '/livros/5ano/portuguesExercicios.jpg'
-				},
-				{
-					subject: 'Inglês',
-					livro: '/livros/5ano/inglesDidatica.pdf',
-					livroEx: '/livros/5ano/inglesExercicios.pdf',
-					preview: '/livros/5ano/inglesDidatica.jpg',
-					previewEx: '/livros/5ano/inglesExercicios.jpg'
-				},
-				{
-					subject: 'História e Geografia',
-					livro: '/livros/5ano/historiaDidatica.pdf',
-					livroEx: '/livros/5ano/historiaExercicios.pdf',
-					preview: '/livros/5ano/historiaDidatica.jpg',
-					previewEx: '/livros/5ano/historiaExercicios.jpg'
-				},
-				{
-					subject: 'Ciências Naturais',
-					livro: '/livros/5ano/cienciaDidatica.pdf',
-					livroEx: '/livros/5ano/cienciaExercicios.pdf',
-					preview: '/livros/5ano/cienciaDidatica.jpg',
-					previewEx: '/livros/5ano/cienciaExercicios.jpg'
-				}
-			]
+			livrosState: []
 		}
 
 	}
 
 	componentDidMount() {
-		const res = fetch('/api/livros')
-		const resBody = res.json();
-		console.log('mount', resBody)
-        setLivros(resBody.animais)
+		this.getLivros();
+	}
+
+	async getLivros() {
+		await fetch("/api/livros", {
+			method: "GET",
+			contentType: "application/json"
+		})
+			.then(res => res.json())
+			.then(arrayLivros => this.setState({
+				livrosState: arrayLivros.livros
+			}))
 	}
 
 	render() {
@@ -88,7 +60,7 @@ export default class LivrosPage extends React.Component {
 				<section className="colDir">
 					<div className="fullRow">
 						{
-							this.state.livros.map(l => (
+							this.state.livrosState.map(l => (
 								<ObjLivro
 									key={l.subject}
 									readLivro={(livro, livroEx) => {
