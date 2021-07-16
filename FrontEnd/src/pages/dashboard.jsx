@@ -34,20 +34,28 @@ export default class Dashboard extends React.Component {
 			<section className="colDir">
 				<div className="superior">
 					<div className="horario">
-						<h3>Horário</h3>
+						<div className="heading4">
+							<h3>Horário</h3>
+						</div>
 						<Horario />
 					</div>
 					<div className="eventos">
-						<h3>Eventos</h3>
+						<div className="heading2">
+							<h3>Eventos</h3>
+						</div>
 					</div>
 				</div>
 				<div className="inferior">
 					<div className="infEsq">
-						<h3>TPC (Trabalhos para Casa)</h3>
+						<div className="heading3">
+							<h3>TPC (Trabalhos para Casa)</h3>
+						</div>
 					</div>
 
 					<div className="infDir">
-						<h3>Professores</h3>
+						<div className="heading1">
+							<h3>Professores</h3>
+						</div>
 						<div className="profs">
 							{
 								this.state.professores.map(d => (
