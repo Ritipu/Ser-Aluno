@@ -8,7 +8,8 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			isLoggedIn: false
+			isLoggedIn: false,
+			token: ''
 		}
 		this.acessPlatform = this.acessPlatform.bind(this)
 	}

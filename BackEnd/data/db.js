@@ -76,7 +76,7 @@ async function insereAnoLetivo(anoLetivo) {
     const res = await collection.insertOne(anoLetivo)
     console.log(anoLetivo, res)
     return res.insertedId;
-}
+}   
 
 async function obtemAnoLetivo(anoLetivo_id) {
     const collection = await getCollection(DB_NAME, "anoLetivo");

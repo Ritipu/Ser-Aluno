@@ -33,7 +33,7 @@ server.post("/api/auth", async (req, res) => {
     const aluno = await obtemAlunoPorNome(username);
 
     if (aluno && await bcrypt.compare(password, aluno.password)) {
-        const sessionId = await insereSessao(aluno.aluno_id)
+        const sessionId = await insereSessao(aluno._id)
         res.status(200).json({ token: sessionId })
     } else {
         res.sendStatus(404)
