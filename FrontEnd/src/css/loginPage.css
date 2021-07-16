@@ -1,0 +1,41 @@
+.logpag{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.imagba{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; 
+  
+  border-top: 40px solid #45a198;
+  width: 100%;
+  height: 18%;
+
+}
+
+.imaga{
+  height: 50%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 82%;
+  z-index: 5;
+  height: 100%;
+
+}
+
+.fundo{
+  size: 50%;
+  height: 90vh;
+  width: 115vw;
+  z-index:1;
+}

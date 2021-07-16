@@ -9,12 +9,22 @@ export default class Plataforma extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			token: '',
 			controlador: 0,
 			controladorLivros: "Home",
+			aluno: '',
 			anoLetivo: ""
 		}
 	}
 
+	componentDidMount() {
+		const token = localStorage.getItem('token')
+		if (token) {
+			this.setState({ token: token })
+		}
+
+		console.log('Token do State: ' + this.state.token)
+	}
 	dashboard() {
 		this.setState({ controlador: 0 });
 	}
@@ -24,10 +34,18 @@ export default class Plataforma extends React.Component {
 		this.setState({ controladorLivros: "Home" });
 	}
 
-	anoLetivo() {
-		fetch('/obtemAnoLetivo') // GET
+	getAluno() {
+		fetch('/api/aluno', {
+			headers: {
+				authorization: 'Bearer ' + this.state.token
+			}
+		})
 			.then(res => res.json())
-			.then(ano => this.setState({ anoLetivo: ano }));
+			.then(user => console.log(user))
+	}
+
+	anoLetivo() {
+
 	}
 
 	perfil() {
@@ -47,6 +65,8 @@ export default class Plataforma extends React.Component {
 						perfil={() => this.perfil()}
 						anoLetivo={this.state.anoLetivo}
 						getAnoLetivo={() => this.anoLetivo()}
+						aluno={this.state.aluno}
+						getAluno={() => this.getAluno()}
 						logout={this.props.logout} />
 					<Dashboard />
 				</div>
@@ -61,6 +81,8 @@ export default class Plataforma extends React.Component {
 						perfil={() => this.perfil()}
 						anoLetivo={this.state.anoLetivo}
 						getAnoLetivo={() => this.anoLetivo()}
+						aluno={this.state.aluno}
+						getAluno={() => this.getAluno()}
 						logout={this.props.logout}
 					/>
 					<LivrosPage state={this.state.controladorLivros}
@@ -77,6 +99,8 @@ export default class Plataforma extends React.Component {
 						perfil={() => this.perfil()}
 						anoLetivo={this.state.anoLetivo}
 						getAnoLetivo={() => this.anoLetivo()}
+						aluno={this.state.aluno}
+						getAluno={() => this.getAluno()}
 						logout={this.props.logout}
 					/>
 					<Perfil />
