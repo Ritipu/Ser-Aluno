@@ -37,7 +37,7 @@ export default class Livro extends React.Component {
         if (this.state.pageNumber > 1) {
             this.setState({ pageNumber: this.state.pageNumber - 1 })
         } else if (this.state.pageNumber === 1) {
-            this.setState({ pageNumber: this.state.pageNumber = 1 })
+            this.setState({ pageNumber: 1 })
         }
     }
 
