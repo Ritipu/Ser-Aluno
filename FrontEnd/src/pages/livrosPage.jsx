@@ -75,6 +75,13 @@ export default class LivrosPage extends React.Component {
 
 	}
 
+	componentDidMount() {
+		const res = fetch('/api/livros')
+		const resBody = res.json();
+		console.log('mount', resBody)
+        setLivros(resBody.animais)
+	}
+
 	render() {
 		if (this.props.state === "Home") {
 			return (
