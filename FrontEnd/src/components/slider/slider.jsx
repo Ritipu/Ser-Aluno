@@ -37,8 +37,8 @@ export default class Slider extends React.Component {
     render() {
         return (
             <div className="slider">
-                <KeyboardArrowLeftIcon className="left-arrow" onClick={this.nextSlide} />
-		        <KeyboardArrowRightIcon className="right-arrow" onClick={this.prevSlide} />
+                <KeyboardArrowLeftIcon className="left-arrow" onClick={this.prevSlide} />
+		        <KeyboardArrowRightIcon className="right-arrow" onClick={this.nextSlide} />
                 <img src={this.state.slides[this.state.position]} alt="sliders" className="slider-img"/>
             </div>
         )

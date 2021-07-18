@@ -14,8 +14,12 @@ export default class Menu extends React.Component {
 			<section className="colEsq">
 					<div className="aluno">
 						<Avatar src="/aluna.jpg" id="icon" alt="avatar" />
-						<h2>{this.props.aluno}</h2>
-						<span>{this.props.anoLetivo}</span>
+						{/* <h2>{this.props.aluno}</h2> */}
+						<h2>Sofia de Carvalho</h2>
+
+						{/* <span>{this.props.anoLetivo}</span> */}
+						<span>5º Ano</span>
+
 						<p>Escola Alberto Joaquim</p>
 					</div>
 
