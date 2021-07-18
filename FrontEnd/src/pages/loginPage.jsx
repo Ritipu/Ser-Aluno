@@ -11,7 +11,7 @@ export default class LoginPage extends React.Component {
 		return (
 			<section className="logpag">
 				<div className="imagba">
-					<img src="/logo.png" className="imaga" />
+					<button onClick={this.props.logout} className="imaga"><img src="/logo.png" id="logo"/></button>
 				</div>
 				<div className="container">
 					<LoginForm acessPlatform={this.props.acessPlatform}/>

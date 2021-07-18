@@ -14,14 +14,19 @@
   
   border-top: 40px solid #45a198;
   width: 100%;
-  height: 18%;
+  height: 25%;
 
 }
 
 .imaga{
-  height: 50%;
+  border:0;
+  background: none;
+  height: 100%;
 }
 
+#logo {
+  height: 65%;
+}
 .container {
   display: flex;
   flex-direction: row;

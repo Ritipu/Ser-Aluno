@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
 import Plataforma from './pages/plataforma';
-import ImageSlider from './components/Slider/imageSlider';
-import { SliderData } from './components/Slider/sliderData';
 import LoginPage from './pages/loginPage';
+import Slider from './components/slider/slider';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -43,7 +42,7 @@ export default class App extends React.Component {
 
 					</div>
 					<div className="body">
-						<ImageSlider slides={SliderData} />
+						<Slider/>
 					</div>
 					<div className="footer">
 						<img src="/logos/portoEditora.png" height="60px" alt="Porto Editora" />
@@ -64,7 +63,9 @@ export default class App extends React.Component {
 		} else if (this.state.isLoggedIn === 2) {
 			return (
 				<div>
-					<LoginPage acessPlatform={() => this.acessPlatform()} />
+					<LoginPage 
+					acessPlatform={() => this.acessPlatform()}
+					logout={() => this.logout()} />
 				</div>
 			)
 		}
