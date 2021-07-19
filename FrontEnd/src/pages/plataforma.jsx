@@ -111,7 +111,9 @@ export default class Plataforma extends React.Component {
 						escola={this.state.escola}
 						logout={this.props.logout}
 					/>
-					<Perfil />
+
+					<Perfil aluno={this.state.aluno} anoLetivo={this.state.anoLetivo}/>
+
 				</div>
 			)
 		}
