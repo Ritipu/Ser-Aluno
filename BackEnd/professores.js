@@ -9,32 +9,27 @@ const arr = [
         {
             name: 'Joaquim', 
             disciplina: 'Matemática', 
-            email:'joaquim@gmail.com', 
-            avatar:'/avatar.jpg'
+            email:'joaquim@gmail.com'
         },
         {
             name: 'Alberto', 
             disciplina: 'Português', 
-            email:'alberto@gmail.com', 
-            avatar:'/avatar.jpg'
+            email:'alberto@gmail.com'
         },
         {
             name: 'Sara', 
             disciplina: 'Inglês', 
-            email:'sara@gmail.com', 
-            avatar:'/avatar.jpg'
+            email:'sara@gmail.com'
         },
         {
             name: 'Maria', 
             disciplina: 'História', 
-            email:'maria@gmail.com', 
-            avatar:'/avatar.jpg'
+            email:'maria@gmail.com'
         },
         {
             name: 'Guilherme', 
             disciplina: 'Ciências',
-            email:'guilherme@gmail.com', 
-            avatar:'/avatar.jpg'
+            email:'guilherme@gmail.com'
         }
 ];
 
