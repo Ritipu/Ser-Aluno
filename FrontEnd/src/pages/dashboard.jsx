@@ -6,7 +6,7 @@ import '../css/dashboard.css'
 function Professor(props) {
 	return (
 		<div className="prof">
-			<Avatar src="/avatar.jpg" id="icon" alt="avatar" />
+			<Avatar src={props.avatar} id="icon" alt="avatar" />
 			<div>
 				<h3>{props.name}</h3>
 				<h4>Prof. {props.disciplinas}</h4>
@@ -20,14 +20,18 @@ export default class Dashboard extends React.Component {
 		super(props)
 		this.state = {
 			professores: [
-				{ name: 'Joaquim', disciplina: 'Matemática', email: 'joaquim@gmail.com' },
-				{ name: 'Alberto', disciplina: 'Português', email: 'alberto@gmail.com' },
-				{ name: 'Sara', disciplina: 'Inglês', email: 'sara@gmail.com' },
-				{ name: 'Maria', disciplina: 'História', email: 'maria@gmail.com' },
-				{ name: 'Guilherme', disciplina: 'Ciências', email: 'guilherme@gmail.com' }
+				{ name: 'Joaquim', disciplina: 'Matemática', email: 'joaquim@gmail.com', avatar: '/avatar.jpg'},
+				{ name: 'Alberto', disciplina: 'Português', email: 'alberto@gmail.com', avatar: '/avatar.jpg' },
+				{ name: 'Sara', disciplina: 'Inglês', email: 'sara@gmail.com', avatar: '/avatar.jpg' },
+				{ name: 'Maria', disciplina: 'História', email: 'maria@gmail.com', avatar: '/avatar.jpg' },
+				{ name: 'Guilherme', disciplina: 'Ciências', email: 'guilherme@gmail.com', avatar: '/avatar.jpg' }
 			]
 		}
 	}
+
+	// metodo de fetch GET
+	//response = profs todos
+	//this.setState({professores: response })
 
 	render() {
 		return (
@@ -63,6 +67,7 @@ export default class Dashboard extends React.Component {
 										name={d.name}
 										disciplinas={d.disciplina}
 										email={d.email}
+										avatar={d.avatar}
 									/>
 								))
 							}
