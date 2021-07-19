@@ -14,7 +14,8 @@ export default class App extends React.Component {
 		this.loginPage = this.loginPage.bind(this)
 	}
 
-	acessPlatform() {
+	acessPlatform(token) {
+		localStorage.setItem('token', token)
 		this.setState({ isLoggedIn: 1 })
 	}
 
@@ -23,6 +24,7 @@ export default class App extends React.Component {
 	}
 
 	logout() {
+		localStorage.removeItem('token')
 		this.setState({ isLoggedIn: 0 })
 	}
 
@@ -34,7 +36,7 @@ export default class App extends React.Component {
 						<img className="navbar-logo" src="/logo.png" height="40px" alt="Ser Aluno" />
 						<div className="navbar-btn">
 							<button className="auth-login" onClick={this.loginPage}>Login</button>
-							<button className="auth-gov" onClick={this.acessPlatform}>
+							<button className="auth-gov" onClick={this.loginPage}>
 								<img src="https://www.autenticacao.gov.pt/o/autenticacao-gov-theme/images/logo/logo-ag.svg"
 									alt="Logo Autenticação Gov" />
 							</button>
@@ -64,7 +66,7 @@ export default class App extends React.Component {
 			return (
 				<div>
 					<LoginPage 
-					acessPlatform={() => this.acessPlatform()}
+					acessPlatform={(token) => this.acessPlatform(token)}
 					logout={() => this.logout()} />
 				</div>
 			)

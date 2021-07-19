@@ -10,24 +10,24 @@ let client
 
 async function connect(uri) {
     try {
-
+        if(client) return client;
         // Cria o cliente
-        const client = new MongoClient(uri, {
+        client = new MongoClient(uri, {
             useUnifiedTopology: true
         })
 
         // Aguarda a ligação
         await client.connect()
-
         // Retorna o cliente
         return client;
+        
     } catch (err) {
         console.log(err);
     }
 }
 
 function closeConnection() {
-    client.close()
+    client.close();
 }
 
 async function getCollection(dbName, collectionName) {
@@ -51,11 +51,32 @@ async function obtemEscola(escolas_id) {
     return res;
 }
 
+//Insere os professores manualmente na professores.js
+async function insereProfessor(professor) {
+    const collection = await getCollection(DB_NAME, "professores");
+    const res = await collection.insertOne(professor)
+    console.log(professor, res)
+    return res.insertedId;
+}
+
+async function obtemProfessores() {
+    const collection = await getCollection(DB_NAME, "professores");
+    const res = await collection.find().toArray();
+    return res;
+}
+
+//Obtem os professores
+async function obtemProfessor(professores_id) {
+    const collection = await getCollection(DB_NAME, "professores");
+    const res = await collection.findOne({_id: mongodb.ObjectId(professores_id)})
+    return res;
+}
+
 async function insereAluno(aluno) {
     const collection = await getCollection(DB_NAME, "alunos");
     aluno.password = await bcrypt.hash(aluno.password, saltRounds);
     const res = await collection.insertOne(aluno)
-    console.log(aluno, res)
+    // console.log(aluno, res)
     return res.insertedId;
 }
 
@@ -134,6 +155,9 @@ async function sessaoProlongada(id) {
 module.exports = {
     insereEscola,
     obtemEscola,
+    insereProfessor,
+    obtemProfessor,
+    obtemProfessores,
     insereAluno,
     obtemAluno,
     obtemAlunoPorNome,

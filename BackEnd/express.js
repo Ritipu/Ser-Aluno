@@ -2,6 +2,9 @@ const express = require('express');
  const { 
     insereEscola,
     obtemEscola,
+    insereProfessor,
+    obtemProfessor,
+    obtemProfessores,
     insereAluno,
     obtemAluno,
     obtemAlunoPorNome,
@@ -41,7 +44,6 @@ server.post("/api/auth", async (req, res) => {
 })
 
 async function verificaAluno(req, res, next) {
-    console.log(req.headers)
     const auth = req.headers.authorization?.split(' ') ?? []
     console.log(auth)
     if (auth.length > 0) {
@@ -68,8 +70,32 @@ server.post("/api/escolas", async (req, res) => {
     res.status(200).json({ escolas })
 })
 
+server.get('/api/professores', async (req, res) => {
+    const professores = await obtemProfessores()
+    res.status(200).json({ professores })
+})
+
+server.get("/api/professores/:id", async (req, res) => {
+    const professores = await obtemProfessor(req.params.id)
+    res.status(200).json({ professores })
+})
+
+server.post("/api/Professores", async (req, res) => {
+    const professores = await insereProfessor(req.body)
+    res.status(200).json({ professores })
+})
+
 server.get("/api/aluno", verificaAluno, async (req, res) => {
-    res.status(200).json({ user: req.user })
+    res.status(200).json({
+        user: req.user.username,
+        ano: req.user.anoletivo,
+        escola: req.user.escola
+    })
+})
+
+server.get("/api/aluno/:id", async (req, res) => {
+    const aluno = await obtemAluno(req.params.id)
+    res.status(200).json({ aluno })
 })
 
 server.post("/api/aluno", async (req, res) => {
@@ -93,7 +119,7 @@ server.get('/api/livros', async (req, res) => {
 })
 
 server.get('/api/livros/:id', async (req, res) => {
-    const livros = await obtemLivros(req.params.id)
+    const livros = await obtemLivro(req.params.id)
     res.status(200).json({ livros })
 })
 

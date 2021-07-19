@@ -7,20 +7,21 @@ import * as Yup from "yup";
 const LoginForm = (props) => (
 	<Formik
 		initialValues={{ username: "", password: "" }}
-		onSubmit={(values, { setSubmitting }) => {
-			setTimeout(() => {
-				fetch('/api/auth', { 
-					method: 'POST',
-					body: JSON.stringify(values) , 
-      		headers: { "Content-Type": "application/json" }
-				})
+		onSubmit={async (values, { setSubmitting }) => {
+			
+			const res = await fetch('/api/auth', {
+				method: 'POST',
+				body: JSON.stringify(values),
+				headers: { "Content-Type": "application/json" }
+			})
 
-				props.acessPlatform();
-				console.log("Logging in", values);
-				setSubmitting(false);
-
-			}, 1000);
+			const json = await res.json();
+			
+			props.acessPlatform(json.token);
+			console.log("Logging in", values);
+			setSubmitting(false);
 		}}
+
 		validationSchema={Yup.object().shape({
 			username:
 				Yup.string()
