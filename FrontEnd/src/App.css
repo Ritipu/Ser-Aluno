@@ -1,7 +1,91 @@
-.titulodoslide{
-    text-align: center;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    top:20%;
+.App {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  height: 5rem;
+  padding: 0 2rem 0 2rem;
+  background-color: #ffffff;
+}
+
+.navbar-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navbar-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 1.2rem;
+}
+
+.auth-login {
+  border:0;
+  background-color: #3da029;
+  color: #ffffff;
+  height: 3.5rem;
+  margin-right: 0.5rem;
+  width: 8rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+.auth-login:hover {
+  cursor: pointer;
+  box-shadow: 0 0 4px #48b831;
+  background-color: #48b831;
+}
+
+.auth-gov {
+  border: 0;
+  box-shadow: none;
+  background-color: #007bff;
+  height: 3.5rem;
+  margin-left: 0.5rem;
+  border-radius: 2px;
+}
+
+.auth-gov:hover {
+  cursor: pointer;
+  box-shadow: 0 0 4px #2b91ff;
+  background-color: #2b91ff;
+}
+
+.body {
+  width: 100vw;
+  height: calc(100vh - 12rem);
+  margin: 5rem 0 7rem 0;
+  background-color: #fff;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: row;
+  background-color:#ffffff;
+  height: 7rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.react-pdf__Document {
+  overflow: hidden;
+  height: 800px;
 }
