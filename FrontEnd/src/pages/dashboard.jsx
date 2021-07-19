@@ -19,19 +19,22 @@ export default class Dashboard extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			professores: [
-				{ name: 'Joaquim', disciplina: 'Matemática', email: 'joaquim@gmail.com', avatar: '/avatar.jpg'},
-				{ name: 'Alberto', disciplina: 'Português', email: 'alberto@gmail.com', avatar: '/avatar.jpg' },
-				{ name: 'Sara', disciplina: 'Inglês', email: 'sara@gmail.com', avatar: '/avatar.jpg' },
-				{ name: 'Maria', disciplina: 'História', email: 'maria@gmail.com', avatar: '/avatar.jpg' },
-				{ name: 'Guilherme', disciplina: 'Ciências', email: 'guilherme@gmail.com', avatar: '/avatar.jpg' }
-			]
+			professores: []
 		}
 	}
 
-	// metodo de fetch GET
-	//response = profs todos
-	//this.setState({professores: response })
+	componentDidMount() {
+		this.getProfessores();
+	}
+	
+	async getProfessores() {
+		await fetch("/api/professores", {
+			method: "GET",
+			contentType: "application/json"
+		})
+			.then(res => res.json())
+			.then(arrayProfessores => console.log(arrayProfessores))
+	}
 
 	render() {
 		return (

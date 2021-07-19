@@ -9,8 +9,8 @@ const arr = [
 ];
 
 async function insert() {
-    for (const school of arr) {
-        await insereEscola(school)
+    for (const escola of arr) {
+        await insereEscola(escola)
     }
     closeConnection()
 }
