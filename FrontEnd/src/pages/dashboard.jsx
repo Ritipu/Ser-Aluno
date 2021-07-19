@@ -8,6 +8,7 @@ function Professor(props) {
 		<div className="prof">
 			<Avatar src={props.avatar} id="icon" alt="avatar" />
 			<div>
+				{props.avatar}
 				<h3>{props.name}</h3>
 				<h4>Prof. {props.disciplinas}</h4>
 				<p>{props.email}</p>
@@ -33,7 +34,9 @@ export default class Dashboard extends React.Component {
 			contentType: "application/json"
 		})
 			.then(res => res.json())
-			.then(arrayProfessores => console.log(arrayProfessores))
+			.then(arrayProfessores => this.setState({
+				professores: arrayProfessores.professores
+			}))
 	}
 
 	render() {
