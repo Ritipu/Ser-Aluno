@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  background-image: url(fundi.jpg);
 }
 
 .imagba{
@@ -26,7 +27,8 @@
 }
 
 #logo {
-  height: 65%;
+  width: 890px;
+  height: 148,95px;
 }
 .container {
   display: flex;
