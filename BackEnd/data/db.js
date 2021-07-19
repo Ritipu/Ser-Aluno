@@ -10,7 +10,7 @@ let client
 
 async function connect(uri) {
     try {
-
+        if(client) return client;
         // Cria o cliente
         client = new MongoClient(uri, {
             useUnifiedTopology: true
@@ -76,7 +76,7 @@ async function insereAluno(aluno) {
     const collection = await getCollection(DB_NAME, "alunos");
     aluno.password = await bcrypt.hash(aluno.password, saltRounds);
     const res = await collection.insertOne(aluno)
-    console.log(aluno, res)
+    // console.log(aluno, res)
     return res.insertedId;
 }
 

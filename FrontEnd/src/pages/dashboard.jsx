@@ -24,8 +24,8 @@ export default class Dashboard extends React.Component {
 		}
 	}
 
-	componentDidMount() {
-		this.getProfessores();
+	async componentDidMount() {
+		await this.getProfessores();
 	}
 	
 	async getProfessores() {

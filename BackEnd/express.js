@@ -44,7 +44,6 @@ server.post("/api/auth", async (req, res) => {
 })
 
 async function verificaAluno(req, res, next) {
-    console.log(req.headers)
     const auth = req.headers.authorization?.split(' ') ?? []
     console.log(auth)
     if (auth.length > 0) {
@@ -87,7 +86,16 @@ server.post("/api/Professores", async (req, res) => {
 })
 
 server.get("/api/aluno", verificaAluno, async (req, res) => {
-    res.status(200).json({ user: req.user })
+    res.status(200).json({
+        user: req.user.username,
+        ano: req.user.anoletivo,
+        escola: req.user.escola
+    })
+})
+
+server.get("/api/aluno/:id", async (req, res) => {
+    const aluno = await obtemAluno(req.params.id)
+    res.status(200).json({ aluno })
 })
 
 server.post("/api/aluno", async (req, res) => {
