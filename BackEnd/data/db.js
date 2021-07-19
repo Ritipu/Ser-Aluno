@@ -12,22 +12,22 @@ async function connect(uri) {
     try {
 
         // Cria o cliente
-        const client = new MongoClient(uri, {
+        client = new MongoClient(uri, {
             useUnifiedTopology: true
         })
 
         // Aguarda a ligação
         await client.connect()
-
         // Retorna o cliente
         return client;
+        
     } catch (err) {
         console.log(err);
     }
 }
 
 function closeConnection() {
-    client.close()
+    client.close();
 }
 
 async function getCollection(dbName, collectionName) {

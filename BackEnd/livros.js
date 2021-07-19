@@ -4,7 +4,7 @@ const {
 } 
 = require('./data/db')
 
-const livros = [
+const arrlivros = [
     {
         subject: 'Matemática',
         livro: '/livros/5ano/matematicaDidatica.pdf',
@@ -43,8 +43,8 @@ const livros = [
 ]
 
 async function insert() {
-    for (const books of livros) {
-        await insereLivros(books)
+    for (const livros of arrlivros) {
+        await insereLivros(livros)
     }
     closeConnection()
 }
