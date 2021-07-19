@@ -5,7 +5,9 @@ const {
 = require('./data/db')
 
 const arr = [
-    {name: 'Cardoso Lopes', location: 'Amadora'}
+    {name: 'Cardoso Lopes'},
+    {name: 'Alto dos Moinhos'},
+    {name: 'Padre Alberto Neto'}
 ];
 
 async function insert() {

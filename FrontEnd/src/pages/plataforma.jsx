@@ -75,7 +75,7 @@ export default class Plataforma extends React.Component {
 						homePageLivros={() => this.homePageLivros()}
 						perfil={() => this.perfil()}
 						aluno={this.state.aluno}
-						anoLetivo={this.state.anoLetivo}
+						anoLetivo={this.state.anoLetivo}	
 						escola={this.state.escola}
 						logout={this.props.logout} />
 					<Dashboard />
