@@ -15,12 +15,16 @@ export default class Slider extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(this.nextSlide, 3500)
+        this.slideInterval()
     }
 
+    slideInterval() {
+        setInterval(this.nextSlide, 3500)
+    }
+    
     nextSlide() {
         if (this.state.position === 2) {
-            this.setState({position: this.state.position = 0})
+            this.setState({position: 0})
         } else {
             this.setState({position: this.state.position + 1})
         }
@@ -28,7 +32,7 @@ export default class Slider extends React.Component {
 
     prevSlide() {
         if (this.state.position === 0) {
-            this.setState({position: this.state.position = 2})
+            this.setState({position: 2})
         } else {
             this.setState({position: this.state.position - 1})
         }
