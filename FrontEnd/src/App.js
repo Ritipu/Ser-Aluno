@@ -36,7 +36,7 @@ export default class App extends React.Component {
 						<img className="navbar-logo" src="/logo.png" height="40px" alt="Ser Aluno" />
 						<div className="navbar-btn">
 							<button className="auth-login" onClick={this.loginPage}>Login</button>
-							<button className="auth-gov" onClick={this.acessPlatform}>
+							<button className="auth-gov" onClick={this.loginPage}>
 								<img src="https://www.autenticacao.gov.pt/o/autenticacao-gov-theme/images/logo/logo-ag.svg"
 									alt="Logo Autenticação Gov" />
 							</button>

@@ -9,22 +9,22 @@ export default class Plataforma extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			token: '',
+			sessao: '',
 			controlador: 0,
 			controladorLivros: "Home",
 			aluno: '',
-			anoLetivo: ""
+			anoLetivo: '',
+			escola: ''
 		}
 	}
 
-	componentDidMount() {
-		const token = localStorage.getItem('token')
-		if (token) {
-			this.setState({ token: token })
-		}
-
-		console.log('Token do State: ' + this.state.token)
+	async componentDidMount() {
+		const token = await localStorage.getItem('token')
+		this.setState({ sessao: token })
+		await this.getAluno()
 	}
+
+
 	dashboard() {
 		this.setState({ controlador: 0 });
 	}
@@ -34,14 +34,25 @@ export default class Plataforma extends React.Component {
 		this.setState({ controladorLivros: "Home" });
 	}
 
-	getAluno() {
-		fetch('/api/aluno', {
+	async getAluno() {
+		const tokenAuth = this.state.sessao
+		
+		const res = await fetch('/api/aluno', {
 			headers: {
-				authorization: 'Bearer ' + this.state.token
+				authorization: `Bearer ${tokenAuth}`
 			}
 		})
-			.then(res => res.json())
-			.then(user => console.log(user))
+
+		const json = await res.json();
+		const aluno = json.user;
+		const ano = json.ano;
+		const escola = json.escola;
+
+		this.setState({
+			aluno: aluno,
+			anoLetivo: ano,
+			escola: escola
+		})
 	}
 
 	anoLetivo() {
@@ -63,10 +74,9 @@ export default class Plataforma extends React.Component {
 					<Menu dashboard={() => this.dashboard()}
 						homePageLivros={() => this.homePageLivros()}
 						perfil={() => this.perfil()}
-						anoLetivo={this.state.anoLetivo}
-						getAnoLetivo={() => this.anoLetivo()}
 						aluno={this.state.aluno}
-						getAluno={() => this.getAluno()}
+						anoLetivo={this.state.anoLetivo}
+						escola={this.state.escola}
 						logout={this.props.logout} />
 					<Dashboard />
 				</div>
@@ -79,10 +89,9 @@ export default class Plataforma extends React.Component {
 					<Menu dashboard={() => this.dashboard()}
 						homePageLivros={() => this.homePageLivros()}
 						perfil={() => this.perfil()}
-						anoLetivo={this.state.anoLetivo}
-						getAnoLetivo={() => this.anoLetivo()}
 						aluno={this.state.aluno}
-						getAluno={() => this.getAluno()}
+						anoLetivo={this.state.anoLetivo}
+						escola={this.state.escola}
 						logout={this.props.logout}
 					/>
 					<LivrosPage state={this.state.controladorLivros}
@@ -97,10 +106,9 @@ export default class Plataforma extends React.Component {
 					<Menu dashboard={() => this.dashboard()}
 						homePageLivros={() => this.homePageLivros()}
 						perfil={() => this.perfil()}
-						anoLetivo={this.state.anoLetivo}
-						getAnoLetivo={() => this.anoLetivo()}
 						aluno={this.state.aluno}
-						getAluno={() => this.getAluno()}
+						anoLetivo={this.state.anoLetivo}
+						escola={this.state.escola}
 						logout={this.props.logout}
 					/>
 					<Perfil />
