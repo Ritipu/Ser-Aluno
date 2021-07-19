@@ -1,70 +1,7 @@
 .perfilContainer {
-    display:flex;
-    flex-direction: row; 
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+    width: 50%;
 }
 
-.form-label {
-    /* display: flex;
-    flex-direction: row;
-    height: 100%;
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-    justify-content: center;
-    align-items: center; */
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-}
-
-.form-field {
-    /* display:flex;
-    flex-direction: row;
-    padding: 12px;
-    border-radius: 4px;
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-    resize: vertical; */
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-}
-
-/* Clear floats after the columns */
-.form-row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-.form-label label {
-    /* display: flex;
-    flex-direction: row; */
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: black;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-field input {
-    /* display: flex;
-    flex-direction: row; */
-    padding: 16px;
-    border: 1px solid #AFD079;
-    font-size: 15px;
-    width:100%;
-    border-radius: 10px;
-    height: 5%;
-    justify-content: center;
-    align-items: center;
+.form-row label {
+    color: #000;
 }

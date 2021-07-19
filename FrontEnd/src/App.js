@@ -14,7 +14,8 @@ export default class App extends React.Component {
 		this.loginPage = this.loginPage.bind(this)
 	}
 
-	acessPlatform() {
+	acessPlatform(token) {
+		localStorage.setItem('token', token)
 		this.setState({ isLoggedIn: 1 })
 	}
 
@@ -23,6 +24,7 @@ export default class App extends React.Component {
 	}
 
 	logout() {
+		localStorage.removeItem('token')
 		this.setState({ isLoggedIn: 0 })
 	}
 
@@ -64,7 +66,7 @@ export default class App extends React.Component {
 			return (
 				<div>
 					<LoginPage 
-					acessPlatform={() => this.acessPlatform()}
+					acessPlatform={(token) => this.acessPlatform(token)}
 					logout={() => this.logout()} />
 				</div>
 			)
