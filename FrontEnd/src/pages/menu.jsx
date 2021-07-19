@@ -7,14 +7,19 @@ export default class Menu extends React.Component {
 
 	componentDidMount() {
 		this.props.getAnoLetivo()
+		this.props.getAluno()
 	}
 	render() {
 		return (
 			<section className="colEsq">
 					<div className="aluno">
-						<Avatar src="/avatar.jpg" id="icon" alt="avatar" />
-						<h2>Aluno</h2>
-						<span>{this.props.anoLetivo}</span>
+						<Avatar src="/aluna.jpg" id="icon" alt="avatar" />
+						{/* <h2>{this.props.aluno}</h2> */}
+						<h2>Sofia de Carvalho</h2>
+
+						{/* <span>{this.props.anoLetivo}</span> */}
+						<span>5º Ano</span>
+
 						<p>Escola Alberto Joaquim</p>
 					</div>
 

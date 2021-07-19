@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon express.js",
     "populate": "node populate.js",
+    "professores": "node professores.js",
     "escolas": "node escolas.js",
     "anoLetivo": "node anoLetivo.js",
     "livros": "node livros.js"

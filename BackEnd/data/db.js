@@ -51,6 +51,27 @@ async function obtemEscola(escolas_id) {
     return res;
 }
 
+//Insere os professores manualmente na professores.js
+async function insereProfessor(professor) {
+    const collection = await getCollection(DB_NAME, "professores");
+    const res = await collection.insertOne(professor)
+    console.log(professor, res)
+    return res.insertedId;
+}
+
+async function obtemProfessores() {
+    const collection = await getCollection(DB_NAME, "professores");
+    const res = await collection.find().toArray();
+    return res;
+}
+
+//Obtem os professores
+async function obtemProfessor(professores_id) {
+    const collection = await getCollection(DB_NAME, "professores");
+    const res = await collection.findOne({_id: mongodb.ObjectId(professores_id)})
+    return res;
+}
+
 async function insereAluno(aluno) {
     const collection = await getCollection(DB_NAME, "alunos");
     aluno.password = await bcrypt.hash(aluno.password, saltRounds);
@@ -76,7 +97,7 @@ async function insereAnoLetivo(anoLetivo) {
     const res = await collection.insertOne(anoLetivo)
     console.log(anoLetivo, res)
     return res.insertedId;
-}
+}   
 
 async function obtemAnoLetivo(anoLetivo_id) {
     const collection = await getCollection(DB_NAME, "anoLetivo");
@@ -134,6 +155,9 @@ async function sessaoProlongada(id) {
 module.exports = {
     insereEscola,
     obtemEscola,
+    insereProfessor,
+    obtemProfessor,
+    obtemProfessores,
     insereAluno,
     obtemAluno,
     obtemAlunoPorNome,

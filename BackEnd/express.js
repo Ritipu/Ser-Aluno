@@ -2,6 +2,9 @@ const express = require('express');
  const { 
     insereEscola,
     obtemEscola,
+    insereProfessor,
+    obtemProfessor,
+    obtemProfessores,
     insereAluno,
     obtemAluno,
     obtemAlunoPorNome,
@@ -17,23 +20,23 @@ const express = require('express');
 
 const bcrypt = require('bcrypt');
 
-const PORT = 3001;
 const server = express();
+const PORT = 4000;
 
 server.use(express.json());
 
-server.get('/', (req, res) => {
+server.get('/api', (req, res) => {
     res.status(200).json({
         message: 'Working'
     })
 })
 
-server.post("/auth", async (req, res) => {
+server.post("/api/auth", async (req, res) => {
     const { username, password } = req.body;
     const aluno = await obtemAlunoPorNome(username);
 
     if (aluno && await bcrypt.compare(password, aluno.password)) {
-        const sessionId = await insereSessao(aluno.aluno_id)
+        const sessionId = await insereSessao(aluno._id)
         res.status(200).json({ token: sessionId })
     } else {
         res.sendStatus(404)
@@ -58,48 +61,61 @@ async function verificaAluno(req, res, next) {
     }
 }
 
-server.get("/escolas/:id", async (req, res) => {
+server.get("/api/escolas/:id", async (req, res) => {
     const escolas = await obtemEscola(req.params.id)
     res.status(200).json({ escolas })
 })
 
-server.post("/escolas", async (req, res) => {
+server.post("/api/escolas", async (req, res) => {
     const escolas = await insereEscola(req.body)
     res.status(200).json({ escolas })
 })
 
-server.get("/aluno", verificaAluno, async (req, res) => {
+server.get('/api/professores', async (req, res) => {
+    const professores = await obtemProfessores()
+    res.status(200).json({ professores })
+})
+
+server.get("/api/professores/:id", async (req, res) => {
+    const professores = await obtemProfessor(req.params.id)
+    res.status(200).json({ professores })
+})
+
+server.post("/api/Professores", async (req, res) => {
+    const professores = await insereProfessor(req.body)
+    res.status(200).json({ professores })
+})
+
+server.get("/api/aluno", verificaAluno, async (req, res) => {
     res.status(200).json({ user: req.user })
 })
 
-server.post("/aluno", async (req, res) => {
+server.post("/api/aluno", async (req, res) => {
     const id = await insereAluno(req.body)
     res.status(200).json({ id })
 })
 
-server.get('/anoLetivo/:id', async (req, res) => {
+server.get('/api/anoLetivo/:id', async (req, res) => {
     const anoLetivo = await obtemAnoLetivo(req.params.id)
     res.status(200).json({ anoLetivo })
 })
 
-server.post('/anoLetivo', async (req, res) => {
+server.post('/api/anoLetivo', async (req, res) => {
     const anoLetivo = await insereAnoLetivo(req.body)
     res.status(200).json({ anoLetivo })
 })
 
-server.get('/livros', async (req, res) => {
+server.get('/api/livros', async (req, res) => {
     const livros = await obtemLivros()
-    console.log(livros)
     res.status(200).json({ livros })
 })
 
-server.get('/livros/:id', async (req, res) => {
-    const livros = await obtemLivros(req.params.id)
-    console.log(livros)
+server.get('/api/livros/:id', async (req, res) => {
+    const livros = await obtemLivro(req.params.id)
     res.status(200).json({ livros })
 })
 
-server.post("/livros", async (req, res) => {
+server.post("/api/livros", async (req, res) => {
     const livros = await insereLivros(req.body)
     res.status(200).json({ livros })
 })

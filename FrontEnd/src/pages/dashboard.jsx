@@ -19,16 +19,28 @@ export default class Dashboard extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			professores: [
-				{ name: 'Joaquim', disciplina: 'Matemática', email: 'joaquim@gmail.com' },
-				{ name: 'Alberto', disciplina: 'Português', email: 'alberto@gmail.com' },
-				{ name: 'Sara', disciplina: 'Inglês', email: 'sara@gmail.com' },
-				{ name: 'Maria', disciplina: 'História', email: 'maria@gmail.com' },
-				{ name: 'Guilherme', disciplina: 'Ciências', email: 'guilherme@gmail.com' }
-			]
+			professoresState: []
 		}
 	}
 
+	componentDidMount() {
+		this.getProfessores();
+	}
+
+	async getProfessores() {
+		await fetch("/api/professores", {
+			method: "GET",
+			contentType: "application/json"
+		})
+			.then(res => res.json())
+			.then(arrayProfessores => console.log(arrayProfessores))
+	}
+
+	/*
+	this.setState({
+				professoresState: arrayProfessores.professores
+			})
+	*/
 	render() {
 		return (
 			<section className="colDir">
@@ -58,11 +70,12 @@ export default class Dashboard extends React.Component {
 						</div>
 						<div className="profs">
 							{
-								this.state.professores.map(d => (
+								this.state.professoresState.map(d => (
 									<Professor
 										name={d.name}
 										disciplinas={d.disciplina}
 										email={d.email}
+										avatar={d.avatar}
 									/>
 								))
 							}
@@ -74,4 +87,4 @@ export default class Dashboard extends React.Component {
 		)
 	}
 
-}
+}	

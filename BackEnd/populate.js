@@ -5,9 +5,7 @@ const {
 = require('./data/db')
 
 const arr = [
-    {username: 'Aluno1', password: '123'},
-    {username: 'Aluno2', password: '123'} // Será que temos que insere o ano com o aluno?
-
+    {username: 'Sofia de Carvalho', password: '1234'},
 ];
 
 async function insert() {
